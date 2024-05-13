@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Book Search
+{% endblock %}
+
+{% block body_class %}
+    search-page
+{% endblock %}
+
+{% block main %}
+    <h2>Books Found</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Book Name</th>
+                <th>Author</th>
+                <th>Genres</th>
+                <th>More Info</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+                <tr>
+                    <td>{{ book[1] }}</td> <!-- Title -->
+                    <td>{{ book[2] }}</td> <!-- Author -->
+                    <td>{{ book[3] }}</td> <!-- Genres -->
+                    <td><a href="{{ book[4] }}" target="_blank">More Info</a></td> <!-- Link to external website -->
+                    <td> <!-- Add to Wishlist button -->
+                        <form action="/add_to_wishlist" method="post">
+                            <input type="hidden" name="book_id" value="{{ book[0] }}">
+                            <input type="hidden" name="book_name" value="{{ book[1] }}">
+                            <button type="submit">Add to Wishlist</button>
+                        </form>
+                    </td>
+                    <td> <!-- Mark as Read button -->
+                        <form action="/add_to_reading_history" method="post">
+                            <input type="hidden" name="book_id" value="{{ book[0] }}">
+                            <input type="hidden" name="book_name" value="{{ book[1] }}">
+                            <button type="submit">Mark as Read</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Wishlist
+{% endblock %}
+
+{% block body_class %}
+    wishlist-page
+{% endblock %}
+
+{% block main %}
+    <h2>Wishlist</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Book Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in wishlist %}
+            <tr>
+                <td>{{ item[2] }}</td>
+                <td>
+                    <form action="/add_to_reading_history" method="post">
+                    <input type="hidden" name="book_id" value="{{ item[1] }}">
+                    <input type="hidden" name="book_name" value="{{ item[2] }}">
+                    <button type="submit">Mark as Read</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

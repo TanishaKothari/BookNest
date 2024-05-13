@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Book Recommendations
+{% endblock %}
+
+{% block body_class %}
+    recommendations-page
+{% endblock %}
+
+{% block main %}
+
+    <h2>Book Recommendations</h2>
+    <h3>Recommended Books</h3>
+    {% if recommended_books %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Book Name</th>
+                    <th>Author</th>
+                    <th>Genres</th>
+                    <th>More Info</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in recommended_books %}
+                    <tr>
+                        <td>{{ book[1] }}</td>
+                        <td>{{ book[2] }}</td>
+                        <td>{{ book[3] }}</td>
+                        <td><a href="{{ book[4] }}" target="_blank">More Info</a></td>
+                        <td>
+                            <form action="/add_to_wishlist" method="post">
+                                <input type="hidden" name="book_id" value="{{ book[0] }}">
+                                <input type="hidden" name="book_name" value="{{ book[1] }}">
+                                <button type="submit">Add to Wishlist</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No recommendations available.</p>
+    {% endif %}
+    <br>
+    <h3>Most Popular Books</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Book Name</th>
+                <th>Author</th>
+                <th>Genres</th>
+                <th>More Info</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in popular_books %}
+                <tr>
+                    <td>{{ book[1] }}</td>
+                    <td>{{ book[2] }}</td>
+                    <td>{{ book[3] }}</td>
+                    <td><a href="{{ book[4] }}" target="_blank">More Info</a></td>
+                    <td>
+                        <form action="/add_to_wishlist" method="post">
+                            <input type="hidden" name="book_id" value="{{ book[0] }}">
+                            <input type="hidden" name="book_name" value="{{ book[1] }}">
+                            <button type="submit">Add to Wishlist</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

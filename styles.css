@@ -1,0 +1,59 @@
+/* Size for brand */
+nav .navbar-brand
+{
+    font-size: xx-large;
+}
+
+/* Colors for brand */
+nav .navbar-brand .blue
+{
+    color: #537fbe;
+}
+nav .navbar-brand .green
+{
+    color: #2e944b;
+}
+
+body.index-page {
+    background-color: #eef1ff;
+}
+body.login-page {
+    background-color: #eefff8;
+}
+body.wishlist-page {
+    background-color: #ffeeee;
+}
+body.register-page {
+    background-color: #fcffee;
+}
+body.search-page {
+    background-color: #fffaee;
+}
+body.history-page {
+    background-color: #fbeeff;
+}
+body.recommendations-page {
+    background-color: #ffeef8;
+}
+
+table
+{
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    border: solid;
+}
+td, th
+{
+    padding: 0.5rem;
+    border: 2px solid black;
+}
+th
+{
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+tr 
+{
+    border: 1px solid black; /* Add borders to table rows */
+}

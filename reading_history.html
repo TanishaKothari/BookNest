@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Reading History
+{% endblock %}
+
+{% block body_class %}
+    history-page
+{% endblock %}
+
+{% block main %}
+    <h2>Reading History</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Book Name</th>
+                <th>Read Date</th>
+                <th>Feedback</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in reading_history %}
+                <tr>
+                    <td>{{ entry[1] }}</td>
+                    <td>{{ entry[2] }}</td>
+                    <td>
+                        <form action="/add_to_reading_history" method="post">
+                            <input type="hidden" name="book_id" value="{{ entry[0] }}">
+                            <input type="hidden" name="book_name" value="{{ entry[1] }}">
+                            <select name="feedback">
+                                <option value="NULL">-- Select an Option --</option>
+                                <option value="Liked">Liked</option>
+                                <option value="Disliked">Disliked</option>
+                            </select>
+                            <button type="submit">Submit</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

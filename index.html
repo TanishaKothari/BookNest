@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Main
+{% endblock %}
+
+{% block body_class %}
+    index-page
+{% endblock %}
+
+{% block main %}
+    <h1>Book Search</h1>
+    <form action="/search" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="title" placeholder="Book Title" type="text">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" name="author" placeholder="Author" type="text">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" name="genre" placeholder="Genre" type="text">
+        </div>
+
+        <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+{% endblock %}
